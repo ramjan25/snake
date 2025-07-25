@@ -1,0 +1,290 @@
+body {
+    background-color: #000;
+    background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    flex-direction: column; /* Changed to column to stack title and container */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+.title-bar {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    background: rgba(0, 15, 30, 0.9);
+    border-bottom: 2px solid #00ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.title-bar h1 {
+    font-size: 3.5em;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+    margin: 0; /* Remove default h1 margin */
+}
+
+.container {
+    display: flex;
+    border: 2px solid #00ffff;
+    border-radius: 15px;
+    background: rgba(0, 15, 30, 0.85);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5), inset 0 0 15px rgba(0, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.left-panel {
+    padding: 25px;
+    width: 300px;
+    border-right: 2px solid #00ffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 1em;
+    color: #aaa;
+    margin-top: 20px;
+    animation: pulse-border 2s infinite alternate;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 15px 0;
+}
+
+h1 {
+    font-size: 3.5em;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+}
+
+h2 {
+    font-size: 2em;
+    color: #00ffff;
+    text-shadow: 0 0 3px #00ffff;
+}
+
+.score-container, .settings, .controls {
+    background: rgba(0, 30, 60, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #00ffff;
+    margin-bottom: 25px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3);
+    animation: pulse-border 2s infinite alternate;
+}
+
+.setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+select, button {
+    font-family: 'Orbitron', sans-serif;
+    background: #212121; /* Dark background for select and buttons */
+    border: 1px solid #00ffff;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1em;
+    color: #e0e0e0;
+    text-shadow: 0 0 5px #00ffff;
+    transition: all 0.3s ease;
+}
+
+select option {
+    background: #212121;
+    color: #e0e0e0;
+}
+
+select:hover, button:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px #00ffff;
+    color: #fff;
+}
+
+#new-game, #restart {
+    width: 100%;
+    padding: 12px;
+    background: #00ffff;
+    color: #000;
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 700;
+    border: none;
+    text-shadow: none;
+}
+
+#new-game:hover, #restart:hover {
+    background: #fff;
+    box-shadow: 0 0 20px #fff;
+}
+
+.controls .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+}
+
+.controls button {
+    background: transparent;
+    color: #00ffff;
+    border: 2px solid #00ffff;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background: #00ffff;
+    color: #000;
+    box-shadow: 0 0 20px #00ffff;
+}
+
+#up { grid-area: up; }
+#left { grid-area: left; }
+#down { grid-area: down; }
+#right { grid-area: right; }
+
+.right-panel {
+    position: relative;
+}
+
+#game-canvas {
+    background: #000;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: #ff0000;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 20px #ff0000;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Existing styles */
+
+/* Add/Modify media query for mobile optimization */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Changed back to column */
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0;
+    }
+
+    .left-panel {
+        border-right: none;
+        border-bottom: 2px solid #00ffff;
+        width: auto;
+        padding: 15px;
+        order: 2; /* Controls, score, settings, copyright will be second */
+    }
+
+    .right-panel {
+        order: 1; /* Game canvas will be first */
+    }
+
+    .score-container {
+        order: 3;
+    }
+
+    .settings {
+        order: 4;
+    }
+
+    .controls {
+        order: 1;
+    }
+
+    .copyright {
+        order: 5;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .score-container, .settings, .controls {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    select, button {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    #new-game, #restart {
+        padding: 10px;
+        font-size: 1.1em;
+    }
+
+    .controls button {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+    }
+
+    #game-canvas {
+        width: 100%;
+        height: auto;
+    }
+
+    .copyright {
+        font-size: 0.7em;
+    }
+}
+
+/* Keyframe animation for dynamic bar effect */
+@keyframes pulse-border {
+    0% { box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3); }
+    50% { box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.6); }
+    100% { box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3); }
+}
+
+/* Apply animation to relevant elements */
+.score-container, .settings, .controls, .copyright {
+    animation: pulse-border 2s infinite alternate;
+}

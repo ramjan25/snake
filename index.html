@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Snake</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="title-bar">
+        <h1>Classic Snake</h1>
+    </div>
+    <div class="container">
+        <div class="left-panel">
+            <div class="score-container">
+                <h2>Score: <span id="score">0</span></h2>
+                <h2>High Score: <span id="high-score">0</span></h2>
+                <h2>Level: <span id="level">1</span></h2>
+            </div>
+            <div class="settings">
+                <h2>Settings</h2>
+                <div class="setting">
+                    <label for="speed">Speed:</label>
+                    <select id="speed">
+                        <option value="200">Slow</option>
+                        <option value="150" selected>Normal</option>
+                        <option value="100">Fast</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="game-mode">Game Mode:</label>
+                    <select id="game-mode">
+                        <option value="classic">Classic</option>
+                        <option value="no-walls" selected>No Walls</option>
+                        <option value="maze">Maze</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="player-select">Player:</label>
+                    <select id="player-select"></select>
+                </div>
+                <button id="new-game">New Game</button>
+            </div>
+            <div class="controls">
+                <h2>Controls</h2>
+                <div class="buttons">
+                    <button id="up">▲</button>
+                    <button id="left">◄</button>
+                    <button id="down">▼</button>
+                    <button id="right">►</button>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Ramjan Khan</p>
+                <p>WhatsApp: 01891966865</p>
+            </div>
+        </div>
+        <div class="right-panel">
+            <canvas id="game-canvas" width="400" height="400"></canvas>
+            <div id="game-over" class="hidden">
+                <h2>Game Over</h2>
+                <button id="restart">Restart</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
